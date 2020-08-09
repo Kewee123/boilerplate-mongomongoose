@@ -6,13 +6,15 @@
 /** # MONGOOSE SETUP #
 /*  ================== */
 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 /** 1) Install & Set up mongoose */
 
 // Add mongodb and mongoose to the project's package.json. Then require 
 // mongoose. Store your Mongo Atlas database URI in the private .env file 
 // as MONGO_URI. Connect to the database using the following syntax:
 //
-// mongoose.connect(<Your URI>, { useNewUrlParser: true, useUnifiedTopology: true }); 
+mongoose.connect("mongodb+srv://kewee:freecodecamp@cluster0.dohoh.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }); 
 
 
 
@@ -40,8 +42,13 @@
 // `default` values. See the [mongoose docs](http://mongoosejs.com/docs/guide.html).
 
 // <Your code here >
+const personSchema = new Schema({
+  name: {type: String, required: true},
+  age : Number,
+  favoriteFoods : [String]
+})
 
-var Person /* = <Your Model> */
+var Person = mongoose.model("Person", personSchema)  /* = <Your Model> */
 
 // **Note**: Glitch is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
@@ -79,10 +86,17 @@ var Person /* = <Your Model> */
 // });
 
 var createAndSavePerson = function(done) {
-  
-  done(null /*, data*/);
+  const newGuy = new Person({name: "Potato", age: "21", favoriteFoods: ["cheese"]});
+
+  newGuy.save((err,data)=>{
+    if(err) return console.error(err) 
+    done(null, data);
+  });
+
+ 
 
 };
+
 
 /** 4) Create many People with `Model.create()` */
 
