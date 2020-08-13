@@ -14,7 +14,7 @@ var Schema = mongoose.Schema;
 // mongoose. Store your Mongo Atlas database URI in the private .env file 
 // as MONGO_URI. Connect to the database using the following syntax:
 //
-mongoose.connect("mongodb+srv://kewee:freecodecamp@cluster0.dohoh.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }); 
+mongoose.connect("mongodb+srv://username:pw@cluster0.dohoh.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }); 
 
 
 
